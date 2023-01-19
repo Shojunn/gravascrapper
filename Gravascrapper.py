@@ -31,52 +31,40 @@ print()
 
 #id
 if not jasao["entry"][0]["id"] != 0:
-    print("ID: this field was left empty")
+    print("ID: this field was left empty.")
 else:
     print("ID: " + jasao["entry"][0]["id"])
 
 #username
 if not jasao["entry"][0]["preferredUsername"] != 0:
-    print("USERNAME: this field was left empty")
+    print("USERNAME: this field was left empty.")
 else:
     print("USERNAME: " + jasao["entry"][0]["preferredUsername"])
 
 #name
 if not jasao["entry"][0]["name"] != 0:
-    print("NAME: this field was left empty")
+    print("NAME: this field was left empty.")
 else:
     print("NAME: " + str(jasao["entry"][0]["name"]["formatted"]))
 
 #aboutme
 if not jasao["entry"][0]["aboutMe"] != 0:
-    print("BIO: this field was left empty")
+    print("BIO: this field was left empty.")
 else:
     print("BIO: " + jasao["entry"][0]["aboutMe"])
 
 #urls
 if len(jasao["entry"][0]["urls"]) <= 3:
-    print("URL: this field was left empty")
+    print("URL: this field was left empty.")
 else:
     print("URL (OPEN WITH CARE): " + str(jasao["entry"][0]["urls"]))
 
 #thumbnailUrl
 if not jasao["entry"][0]["thumbnailUrl"] != 0:
-    print("Thumbnail: this field was left empty")
+    print("THUMBNAIL URL: this field was left empty.")
 else:
-    print("Thumbnail: " + jasao["entry"][0]["thumbnailUrl"])
+    print("THUMBNAIL URL: " + jasao["entry"][0]["thumbnailUrl"])
 
 print()
 print("=====FINISHED=====")
 print()
-
-
-
-"""
-try:
-    print("USERNAME: " + jasao["entry"][0]["preferredUsername"])
-except:
-    print("Tone")
-
-#type check
-print(type(jasao["entry"]))
-"""
