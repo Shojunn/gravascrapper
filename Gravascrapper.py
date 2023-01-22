@@ -16,55 +16,139 @@ print()
 url = "https://www.gravatar.com/" + handle + ".json"
 jasao = requests.get(url).json()
 
-"""
-##raw output
-print("=====OUTPUT=====")
-print()
-print(jasao)
-print()
-"""
+##existence check
 
-##refined output
-
-print("=====OUTPUT=====")
-print()
-
-#id
-if not jasao["entry"][0]["id"] != 0:
-    print("ID: this field was left empty.")
+if jasao == "User not found":
+    print("=====OUTPUT=====")
+    print()
+    print("This username is not tied to a Gravatar account.")
+    print()
 else:
-    print("ID: " + jasao["entry"][0]["id"])
 
-#username
-if not jasao["entry"][0]["preferredUsername"] != 0:
-    print("USERNAME: this field was left empty.")
-else:
-    print("USERNAME: " + jasao["entry"][0]["preferredUsername"])
+    ""
+    ##raw output
+    print("=====OUTPUT=====")
+    print()
+    print(jasao)
+    print()
+    ""
 
-#name
-if not jasao["entry"][0]["name"] != 0:
-    print("NAME: this field was left empty.")
-else:
-    print("NAME: " + str(jasao["entry"][0]["name"]["formatted"]))
+    ##refined output
 
-#aboutme
-if not jasao["entry"][0]["aboutMe"] != 0:
-    print("BIO: this field was left empty.")
-else:
-    print("BIO: " + jasao["entry"][0]["aboutMe"])
+    print("=====BIOGRAPHIC OUTPUT=====")
+    print()
 
-#urls
-if len(jasao["entry"][0]["urls"]) <= 3:
-    print("URL: this field was left empty.")
-else:
-    print("URL (OPEN WITH CARE): " + str(jasao["entry"][0]["urls"]))
+    #id
+    if not jasao["entry"][0]["id"] != 0:
+        print("ID: ---")
+    else:
+        print("ID: " + jasao["entry"][0]["id"])
 
-#thumbnailUrl
-if not jasao["entry"][0]["thumbnailUrl"] != 0:
-    print("THUMBNAIL URL: this field was left empty.")
-else:
-    print("THUMBNAIL URL: " + jasao["entry"][0]["thumbnailUrl"])
+    #username
+    if not jasao["entry"][0]["preferredUsername"] != 0:
+        print("USERNAME: ---")
+    else:
+        print("USERNAME: " + jasao["entry"][0]["preferredUsername"])
 
-print()
-print("=====FINISHED=====")
-print()
+    #displayName
+
+    try:
+        if not jasao["entry"][0]["displayName"] != 0:
+            print("DISPLAY NAME: ---")
+        else:
+            print("DISPLAY NAME: " + jasao["entry"][0]["displayName"])
+    except:
+        print("DISPLAY NAME: ---")
+
+    #name
+    try:
+        if not jasao["entry"][0]["name"] != 0:
+            print("NAME: ---")
+        else:
+            print("NAME: " + str(jasao["entry"][0]["name"]["formatted"]))
+    except:
+        print("NAME: ---")
+
+    #aboutme
+    try:
+        if not jasao["entry"][0]["aboutMe"] != 0:
+            print("BIO: ---")
+        else:
+            print("BIO: " + jasao["entry"][0]["aboutMe"])
+    except:
+        print("BIO: ---")
+
+    #currentLocation
+    try:
+        if not jasao["entry"][0]["currentLocation"] != 0:
+            print("LOCATION: ---")
+        else:
+            print("LOCATION: " + jasao["entry"][0]["currentLocation"])
+    except:
+        print("LOCATION: ---")
+
+    print()
+    print("=====EMAIL & URLS=====")
+    print()
+
+    #emails
+    try:
+        if not jasao["entry"][0]["emails"][0]["value"] != 0:
+            print("EMAIL: ---")
+        else:
+            print("EMAIL: " + jasao["entry"][0]["emails"][0]["value"])
+    except:
+        print("EMAIL: ---")
+
+    #urls
+    try:
+        if len(jasao["entry"][0]["urls"]) >= 2:
+            print("URL: ---")
+        else:
+            print("URL (OPEN WITH CARE): " + str(jasao["entry"][0]["urls"][0]["value"]))
+    except:
+        print("URL: ---")
+
+    #thumbnailUrl
+    try:
+        if not jasao["entry"][0]["thumbnailUrl"] != 0:
+            print("THUMBNAIL URL: ---")
+        else:
+            print("THUMBNAIL URL: " + jasao["entry"][0]["thumbnailUrl"])
+    except:
+        print("THUMBNAIL URL: ---")
+    
+    #profileBackground'
+    try:
+        if not jasao["entry"][0]["profileBackground"]["url"] != 0:
+            print("BACKGROUND: ---")
+        else:
+            print("BACKGROUND: " + jasao["entry"][0]["profileBackground"]["url"])
+    except:
+        print("BACKGROUND: ---")
+
+    print()
+    print("=====ACCOUNTS=====")
+    print()
+
+    #ims-Skype
+    try:
+        if not jasao["entry"][0]["ims"][0]["value"] != 0:
+            print("SKYPE: ---")
+        else:
+            print("SKYPE: " + jasao["entry"][0]["ims"][0]["value"])
+    except:
+        print("SKYPE: ---")
+
+    #twitter
+    try:
+        if not jasao["entry"][0]["accounts"][0]["url"] != 0:
+            print("TWITTER: ---")
+        else:
+            print("TWITTER: " + jasao["entry"][0]["accounts"][0]["url"])
+    except:
+        print("TWITTER: ---")
+
+    print()
+    print("=====FINISHED=====")
+    print()
