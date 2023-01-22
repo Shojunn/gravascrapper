@@ -1,4 +1,5 @@
-# gravascrapper
+# Gravascrapper
+
 Gravatar OSINT tool
 
 ## Description
